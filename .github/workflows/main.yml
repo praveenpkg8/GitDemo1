@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - python3-ci
+      - python3
+      - master
+  pull_request:
+    branches:
+      - python3-ci
+      - python3
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - name: Check for script working
+        run: echo Hello, world!
